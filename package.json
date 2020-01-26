@@ -76,5 +76,8 @@
   "dependencies": {
     "d3": "^4.11.0",
     "plugin-typescript": "^7.1.0"
+  },
+  "scripts": {
+    "postinstall": "mv ./dist/* ./ && rmdir ./dist"
   }
 }
