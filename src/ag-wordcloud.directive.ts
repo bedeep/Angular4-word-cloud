@@ -33,7 +33,7 @@ export class AgWordCloudDirective implements OnInit {
     }
 
     private getTextRotation(): number | RotationFunction {
-        const defaultRotation = () => ~~(Math.random() * 2) * 90;
+        const defaultRotation = () => ~~(Math.random() * 1) * 90;
         try {
             return this.options.settings.hasOwnProperty("textRotation")
                 ? this.options.settings.textRotation
