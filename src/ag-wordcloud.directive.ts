@@ -1,13 +1,11 @@
-import {
-    Directive, ElementRef, Input, Output, OnInit, EventEmitter
-} from '@angular/core';
+import { Directive, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import * as D3 from 'd3';
 
 declare let d3: any;
 
 export type RotationFunction = () => number;
 
-@Directive({selector: 'div[AgWordCloud]', exportAs: 'ag-word-cloud'})
+@Directive({ selector: 'div[AgWordCloud]', exportAs: 'ag-word-cloud' })
 export class AgWordCloudDirective implements OnInit {
 
     @Input() wordData: AgWordCloudData[];
@@ -34,12 +32,12 @@ export class AgWordCloudDirective implements OnInit {
         this.update();
     }
 
-    private getTextRotation():number | RotationFunction {
+    private getTextRotation(): number | RotationFunction {
         const defaultRotation = () => ~~(Math.random() * 2) * 90;
         try {
             return this.options.settings.hasOwnProperty("textRotation")
-            ? this.options.settings.textRotation
-            : defaultRotation;
+                ? this.options.settings.textRotation
+                : defaultRotation;
         } catch (err) {
             return defaultRotation;
         }
@@ -48,7 +46,7 @@ export class AgWordCloudDirective implements OnInit {
     private roundNumber() {
         const temp = this.wordData.map(d => {
             if (d.color) {
-                return {text: d.text, size: this.scale(d.size), color: d.color};
+                return { text: d.text, size: this.scale(d.size), color: d.color };
             }
             return {
                 text: d.text,
